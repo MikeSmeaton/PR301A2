@@ -11,17 +11,21 @@ class Command(cmd.Cmd):
         self.db = new_db
         self.view = new_view
 
+    def request_help(self, commandName):
+        result = self.file_handler.open_help(commandName)
+        if result == "No such command.":
+            print("Could not find entry in help file")
+        else:
+            print(result)
+
     @staticmethod
     def do_quit(arg):
         sys.exit(1)
 
     # Rosemary
     def help_quit(self):
-        result = self.file_handler.open_help("quit")
-        if result == "No such command.":
-            print("Could not find entry in help file")
-        else:
-            print(result)
+        self.request_help("quit")
+
 
     # Tim
     def do_open(self, arg):
@@ -31,11 +35,7 @@ class Command(cmd.Cmd):
 
     # Tim
     def help_open(self):
-        result = self.file_handler.open_help("open")
-        if result == "No such command.":
-            print("Could not find entry in help file")
-        else:
-            print(result)
+        self.request_help("open")
 
     # Tim
     def do_bar(self, arg):
@@ -54,11 +54,7 @@ class Command(cmd.Cmd):
 
     # Tim
     def help_get(self):
-        result = self.file_handler.open_help("get")
-        if result == "No such command.":
-            print("Could not find entry in help file")
-        else:
-            print(result)
+        self.request_help("get")
 
     # Tim
     def do_pie(self, arg):
@@ -73,11 +69,7 @@ class Command(cmd.Cmd):
 
     # Tim
     def help_pie(self):
-        result = self.file_handler.open_help("pie")
-        if result == "No such command.":
-            print("Could not find entry in help file")
-        else:
-            print(result)
+        self.request_help("pie")
 
     # Hasitha
     def do_line(self, arg):
@@ -87,11 +79,7 @@ class Command(cmd.Cmd):
 
     # Tim
     def help_line(self):
-        result = self.file_handler.open_help("line")
-        if result == "No such command.":
-            print("Could not find entry in help file")
-        else:
-            print(result)
+        self.request_help("line")
 
     # Rosemary
     def do_linegraph(self, arg):
@@ -102,11 +90,7 @@ class Command(cmd.Cmd):
 
     # Tim
     def help_linegraph(self):
-        result = self.file_handler.open_help("linegraph")
-        if result == "No such command.":
-            print("Could not find entry in help file")
-        else:
-            print(result)
+        self.request_help("linegraph")
 
     # Tim
     def do_scatter(self, arg):
@@ -124,11 +108,7 @@ class Command(cmd.Cmd):
 
     #Rosemary
     def help_scatter(self):
-        result = self.file_handler.open_help("scatter")
-        if result == "No such command.":
-            print("Could not find entry in help file")
-        else:
-            print(result)
+        self.request_help("scatter")
 
     # Tim
     def do_reload(self, arg):
@@ -137,8 +117,4 @@ class Command(cmd.Cmd):
 
     # Hasitha
     def help_reload(self):
-        result = self.file_handler.open_help("reload")
-        if result == "No such command.":
-            print("Could not find entry in help file")
-        else:
-            print(result)
+       self.request_help("reload")
